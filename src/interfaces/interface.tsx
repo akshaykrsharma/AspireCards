@@ -1,5 +1,5 @@
 import React from 'react'
-import {GestureResponderEvent} from 'react-native'
+import {GestureResponderEvent,ImageSourcePropType} from 'react-native'
 
 export interface HeaderProps {
   title?: string; //?: it means it is optional property
@@ -15,4 +15,31 @@ export interface DebitProps {
   navigation: {
     navigate:Function
   }
+}
+
+export interface DetailPropsType {
+  navigation: {
+    goBack: Function,
+  };
+}
+export interface CardCellPropsType {
+  title: string,
+  image: ImageSourcePropType,
+  description: string,
+  showSwitch: boolean,
+  amount: string
+  // navigation: {
+  //   goBack: Function,
+  // };
+}
+export interface CardPropsType {
+  name: string,
+  card_number: string,
+  valid_through: string,
+  cvv: string,
+  image: ImageSourcePropType,
+  style: object
+  // navigation: {
+  //   goBack: Function,
+  // };
 }

@@ -43,10 +43,9 @@ function Header(props: HeaderProps) {
 const styles = StyleSheet.create({
   mainContainerStyle: {
     width: '100%',
-    backgroundColor: Colors.background_blue,
   },
   containerStyle: {
-    paddingHorizontal: 13,
+    paddingHorizontal: 24,
     paddingVertical: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',

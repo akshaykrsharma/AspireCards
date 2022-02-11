@@ -1,15 +1,10 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import { DetailPropsType } from '../../../interfaces/interface';
 import Strings from '../../../res/Strings';
 import Header from '../../common/Header';
-
-interface PropsType {
-  navigation: {
-    goBack: Function,
-  };
-}
-
-function SpendingLimit(props: PropsType) {
+ 
+function SpendingLimit(props: DetailPropsType) {
   return (
     <View style={styles.containerStyle}>
       <Header

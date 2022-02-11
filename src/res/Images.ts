@@ -10,7 +10,10 @@ const Images = {
   limit: { source: require('./img/limit.png'), style: {} },
   topup: { source: require('./img/topup.png'), style: {} },
   newcard: { source: require('./img/newcard.png'), style: {} },
+  visa: { source: require('./img/visa.png'), style: {} },
   deactive: { source: require('./img/deactive.png'), style: {} },
+  eye_off: { source: require('./img/eye_off.png'), style: {} },
+  eye_on: { source: require('./img/eye_on.png'), style: {} },
 };
 
 export default Images;

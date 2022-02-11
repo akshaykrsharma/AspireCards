@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text,View,StyleSheet} from 'react-native'
+import Colors from '../../../res/Colors';
 import Strings from '../../../res/Strings';
 
 function Profile():any {
@@ -12,7 +13,8 @@ const styles = StyleSheet.create({
 		width: '100%',
 		flex: 1,
 		justifyContent: 'center',
-		alignItems:'center'
+		alignItems: 'center',
+		backgroundColor: Colors.background_blue,
 	},
 	textStyle: {
 		fontSize:30,
