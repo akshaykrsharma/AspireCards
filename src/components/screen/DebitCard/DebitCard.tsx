@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, Text, ScrollView, Dimensions } from 'react-native';
 import { DebitProps } from '../../../interfaces/interface';
 import {boldFont, lightFont} from '../../../res/Fonts';
@@ -10,6 +10,9 @@ import Card from './Card';
 import Images from '../../../res/Images';
 import HomeListItem from '../DebitCard/HomeListItem';
 import CardCell from './CardCell';
+import APIManager from '../../../networking/APIManager';
+import USER_DATA_URL  from '../../../networking/EndPoints';
+
 
 const {height} = Dimensions.get('screen');
 
@@ -55,6 +58,15 @@ function renderCardInfo(props:DebitProps) {
   );
 }
 function DebitCard(props: DebitProps) {
+ 
+  useEffect(() => {
+    APIManager.getResponse(USER_DATA_URL, "GET", {}, (status: boolean, response: {data:object}) => {
+      if (status) {
+        console.log(response.data);
+      }
+    });
+  })
+
   return (
     <View style={styles.containerStyle}>
       <Header title={Strings.TabTitles.debitCard}></Header>

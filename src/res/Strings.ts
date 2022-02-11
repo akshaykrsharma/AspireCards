@@ -1,5 +1,5 @@
 const Strings = {
-  BASE_URL:'',
+  BASE_URL:'https://whispering-eyrie-76050.herokuapp.com',
 	TabTitles: {
 		home: 'Home',
     debitCard: 'Debit Card',

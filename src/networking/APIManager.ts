@@ -1,35 +1,35 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import Strings from '../res/Strings';
 
-export default function APIManager() {
+export default class APIManager {
   /**
    *
    * @param {end points of api} endPoint
    * @param {methodType can be GET,POST,PUT or DELETE} methodType
    * @param {Bundle} params
    */
-  function createPromise(endPoint: string, methodType: string, params: object): Promise<AxiosResponse<Function,Function>> {
-    const APIClient = axios.create({
+
+  static createPromise(
+    endPoint: string,
+    methodType: string,
+    params: object,
+  ): Promise<AxiosResponse<Function, Function>> {
+    let promise = null;
+    const API = axios.create({
       baseURL: Strings.BASE_URL,
       timeout: 3 * 60 * 1000,
     });
-    let promise = null;
     if (methodType == 'GET') {
-      promise = APIClient.get(endPoint, {params});
+      promise = API.get(endPoint, {params});
     } else if (methodType == 'POST') {
-      promise = APIClient.post(endPoint, params);
+      promise = API.post(endPoint, params);
     } else if (methodType == 'PUT') {
-      promise = APIClient.put(endPoint, params);
-    } else {
-      promise = APIClient.delete(endPoint, params);
+      promise = API.put(endPoint, params);
+    } else if (methodType == 'DELETE') {
+      promise = API.delete(endPoint, params);
     }
 
     return promise;
-  }
-
-  interface CallBackFx {
-    status: boolean;
-    response: Object;
   }
 
   /**
@@ -40,15 +40,15 @@ export default function APIManager() {
    * @param {callback is to handle response. isSuccessful will be false if there is error.} callBackFx
    */
 
-  function getResponse(
+  static getResponse = (
     endPoint: string,
     methodType: string,
     params: object,
-    callBackFx: CallBackFx,
-  ) {
-    const mPromise = createPromise(endPoint, methodType, params);
+    callBackFx: Function,
+  ) => {
+    const mPromise = APIManager.createPromise(endPoint, methodType, params);
     mPromise
-      .then((response: Object) => {
+      .then(response => {
         //cb = (isSuccessful, response);
         callBackFx(true, response.data);
       })
@@ -59,5 +59,5 @@ export default function APIManager() {
       });
 
     return mPromise;
-  }
+  };
 }

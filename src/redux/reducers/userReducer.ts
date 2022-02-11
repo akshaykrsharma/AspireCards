@@ -3,13 +3,17 @@ const INITIAL_STATE = {
   isFetching: true,
   payload: {},
 };
-import {
+
+import TYPES from '../type';
+
+const {
   FETCHING_USER_DATA,
   USER_DATA_SUCCESS,
   USER_DATA_ERROR,
   UPDATE_BALANCE_SUCCESS,
   UPDATE_BALANCE_ERROR,
-} from '../types/type';
+} = TYPES;
+
 
 export default (state, action: object) => {
   console.log('AuthReducer Action=', action.type);
