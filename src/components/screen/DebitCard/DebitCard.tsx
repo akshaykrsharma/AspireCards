@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     paddingBottom: 0.34 * height,
   },
   contentContainerStyle: {
-    marginTop: 0.34 * (height - getStatusBarHeight()),
+    marginTop: 0.34 * (height - getStatusBarHeight()) - 80,
   },
 });
 
