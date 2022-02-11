@@ -5,7 +5,7 @@ import Strings from '../../../res/Strings';
 import {boldFont, regularFont} from '../../../res/Fonts';
 
 export default function VerticalCard() {
-  this.anim = new Animated.Value(0);
+  const anim = new Animated.Value(0);
 
   const [progressStatus, setProgressStatus] = useState(0);
   const [totalAmount] = useState(5000);
@@ -13,14 +13,15 @@ export default function VerticalCard() {
   useEffect(() => {
     onAnimate();
   }, []);
-  onAnimate = () => {
+  const onAnimate = () => {
     let perProgressStatus = (currentAmount / totalAmount) * 100;
-    this.anim.addListener(({value}) => {
+    anim.addListener(({value}:any) => {
       setProgressStatus(parseInt(value, 10));
     });
-    Animated.timing(this.anim, {
+    Animated.timing(anim, {
       toValue: perProgressStatus,
       duration: 2000,
+      useNativeDriver: false
     }).start();
   };
 

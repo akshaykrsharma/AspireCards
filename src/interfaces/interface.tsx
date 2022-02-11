@@ -29,7 +29,7 @@ export interface CardCellPropsType {
   showSwitch: boolean,
   amount: string,
   navigation: {
-    navigate:Function
+    navigate: Function
   }
 }
 export interface CheckedPropType {

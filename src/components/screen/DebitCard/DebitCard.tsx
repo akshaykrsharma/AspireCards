@@ -116,10 +116,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: Colors.white,
-    paddingBottom: 0.32 * height,
+    paddingBottom: 0.34 * height,
   },
   contentContainerStyle: {
-    marginTop: 0.32 * (height - getStatusBarHeight()),
+    marginTop: 0.34 * (height - getStatusBarHeight()),
   },
 });
 

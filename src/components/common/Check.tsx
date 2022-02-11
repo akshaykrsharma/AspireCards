@@ -1,14 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {CheckedPropType} from '../../interfaces/interface';
 import Images from '../../res/Images';
 
 function Check(props: CheckedPropType) {
   const [checked, setChecked] = useState(props.isChecked);
-  // useEffect(() => {
-  // props.selectedValue &&  props.selectedValue(checked);
-  // }, [checked]);
-
   return (
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <TouchableOpacity
