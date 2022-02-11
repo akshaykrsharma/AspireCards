@@ -7,7 +7,6 @@ export default function HomeListItem() {
       title: Strings.HomeListItems.topUp,
       description: Strings.HomeListItems.topUpDescription,
       image: Images.topup.source,
-      showSwitch: false,
     },
     {
       title: Strings.HomeListItems.limit,
@@ -25,13 +24,11 @@ export default function HomeListItem() {
       title: Strings.HomeListItems.newCard,
       description: Strings.HomeListItems.newCardDescription,
       image: Images.newcard.source,
-      showSwitch: false,
     },
     {
       title: Strings.HomeListItems.deactivated,
       description: Strings.HomeListItems.deactivatedDescription,
       image: Images.deactive.source,
-      showSwitch: false,
     },
   ];
 }

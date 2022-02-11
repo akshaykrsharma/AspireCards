@@ -26,7 +26,7 @@ export interface CardCellPropsType {
   title?: string,
   image?: ImageSourcePropType,
   description: string,
-  showSwitch: boolean,
+  showSwitch?: boolean,
   amount: string,
   navigation: {
     navigate: Function

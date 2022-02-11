@@ -12,6 +12,8 @@ import HomeListItem from '../DebitCard/HomeListItem';
 import CardCell from './CardCell';
 import APIManager from '../../../networking/APIManager';
 import USER_DATA_URL  from '../../../networking/EndPoints';
+import CardView from '../../common/CardView';
+import AmountGreen from '../../common/AmountGreen';
 
 
 const {height} = Dimensions.get('screen');
@@ -22,9 +24,7 @@ function renderBalanceContainer() {
     <>
       <Text style={styles.availableBalance}>{Strings.availableBalance}</Text>
       <View style={styles.amountContainer}>
-        <View style={styles.amountRoundContainer}>
-          <Text style={styles.amountRound}>S$</Text>
-        </View>
+        <AmountGreen/>
         <Text style={styles.amountText}>{getIndianAmountFormat(amount)}</Text>
       </View>
     </>
@@ -34,7 +34,7 @@ function renderBalanceContainer() {
 function renderListItem(props:DebitProps) {
   let data = HomeListItem();
   return data.map((item, index) => (
-    <CardCell {...item} navigation={props.navigation} amount={index == 1 ? '4000' : ''} />
+    <CardCell key={index} {...item} navigation={props.navigation} amount={index == 1 ? '4000' : ''} />
   ));
 }
 
@@ -43,7 +43,7 @@ function renderCardInfo(props:DebitProps) {
     <ScrollView
       style={styles.containerScrollView}
       contentContainerStyle={styles.contentContainerStyle}>
-      <View style={styles.containerChildScrollView}>
+      <CardView style={styles.containerChildScrollView}>
         <Card
           style={styles.cardStyle}
           name={'Mark Henry'}
@@ -53,7 +53,7 @@ function renderCardInfo(props:DebitProps) {
           image={Images.visa.source}
         />
         {renderListItem(props)}
-      </View>
+      </CardView>
     </ScrollView>
   );
 }
@@ -95,24 +95,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     flexDirection: 'row',
   },
-  amountRoundContainer: {
-    paddingHorizontal: 10,
-    minWidth: 40,
-    paddingVertical: 5,
-    backgroundColor: Colors.app_theme,
-    borderRadius: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   cardStyle: {
     width: '88%',
     marginTop: -80,
     alignSelf: 'center',
     paddingBottom: 20,
-  },
-  amountRound: {
-    ...boldFont(12),
-    color: Colors.white,
   },
   amountText: {
     ...boldFont(24),
@@ -125,9 +112,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   containerChildScrollView: {
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor: Colors.white,
     paddingBottom: 0.34 * height,
   },
   contentContainerStyle: {

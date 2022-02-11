@@ -5,6 +5,7 @@ import {boldFont, regularFont} from '../../../res/Fonts';
 import Colors from '../../../res/Colors';
 import { getIndianAmountFormat } from '../../../utils/Utils';
 import Check from '../../common/Check';
+import Strings from '../../../res/Strings';
 
 function CardCell(props: CardCellPropsType) {
   const {title, image, description, showSwitch,amount} = props;
@@ -15,10 +16,13 @@ function CardCell(props: CardCellPropsType) {
         <Text style={styles.textStyle}>{title}</Text>
         <Text style={styles.descriptionStyle}>{`${description} ${getIndianAmountFormat(amount)}`}</Text>
       </View>
-      {showSwitch && <Check isChecked={showSwitch} selectedValue={(isSelected:boolean) => {
+      {showSwitch!=undefined && <Check isChecked={showSwitch} selectedValue={(isSelected:boolean) => {
         console.log('selectedValue==' + isSelected);
         if (isSelected) {
-          props.navigation.navigate('SpendingLimit')
+          if (title == Strings.HomeListItems.limit) {
+            props.navigation.navigate('SpendingLimit');
+          }
+          
         }
       }} />}
     </View>

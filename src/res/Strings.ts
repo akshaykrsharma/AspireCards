@@ -16,7 +16,9 @@ const Strings = {
   },
   cardSpendingLimit: 'Debit card spending limit',
   hideCardNumber:'Hide card number',
-  showCardNumber:'Show card number',
+  showCardNumber: 'Show card number',
+  spendingLimitText: 'Set a weekly debit card spending limit',
+  spendingLimitDescription:'Here weekly means the last 7 days - not the calendar week',
   HomeListItems: {
     topUp: 'Top-up account',
     topUpDescription: 'Deposit money to your account to use with card',
@@ -28,6 +30,7 @@ const Strings = {
     newCardDescription: 'This deactivates your current debit card',
     deactivated: 'Deactivated card',
     deactivatedDescription: 'Your previously deactivated cards',
+    
   }
 };
 

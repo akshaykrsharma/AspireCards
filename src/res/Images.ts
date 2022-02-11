@@ -17,6 +17,7 @@ const Images = {
   back: { source: require('./img/back.png'), style: {} },
   checked: { source: require('./img/checked.png'), style: {} },
   unChecked: { source: require('./img/unChecked.png'), style: {} },
+  meter: { source: require('./img/meter.png'), style: {} },
 };
 
 export default Images;
