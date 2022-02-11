@@ -28,14 +28,14 @@ function renderBalanceContainer() {
   );
 }
 
-function renderListItem() {
+function renderListItem(props:DebitProps) {
   let data = HomeListItem();
   return data.map((item, index) => (
-    <CardCell {...item} amount={index == 1 ? '4000' : ''} />
+    <CardCell {...item} navigation={props.navigation} amount={index == 1 ? '4000' : ''} />
   ));
 }
 
-function renderCardInfo() {
+function renderCardInfo(props:DebitProps) {
   return (
     <ScrollView
       style={styles.containerScrollView}
@@ -49,7 +49,7 @@ function renderCardInfo() {
           cvv="456"
           image={Images.visa.source}
         />
-        {renderListItem()}
+        {renderListItem(props)}
       </View>
     </ScrollView>
   );
@@ -59,7 +59,7 @@ function DebitCard(props: DebitProps) {
     <View style={styles.containerStyle}>
       <Header title={Strings.TabTitles.debitCard}></Header>
       {renderBalanceContainer()}
-      {renderCardInfo()}
+      {renderCardInfo(props)}
       {/* <Button
         title={'GOTO Spending'}
         onPress={() => props.navigation.navigate('SpendingLimit')}></Button> */}

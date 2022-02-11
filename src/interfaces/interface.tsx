@@ -23,14 +23,20 @@ export interface DetailPropsType {
   };
 }
 export interface CardCellPropsType {
-  title: string,
-  image: ImageSourcePropType,
+  title?: string,
+  image?: ImageSourcePropType,
   description: string,
   showSwitch: boolean,
-  amount: string
-  // navigation: {
-  //   goBack: Function,
-  // };
+  amount: string,
+  navigation: {
+    navigate:Function
+  }
+}
+export interface CheckedPropType {
+  selectedValue?: Function,
+  isChecked: boolean,
+  label?: string,
+  image?: ImageSourcePropType,
 }
 export interface CardPropsType {
   name: string,

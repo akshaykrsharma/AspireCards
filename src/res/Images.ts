@@ -14,6 +14,9 @@ const Images = {
   deactive: { source: require('./img/deactive.png'), style: {} },
   eye_off: { source: require('./img/eye_off.png'), style: {} },
   eye_on: { source: require('./img/eye_on.png'), style: {} },
+  back: { source: require('./img/back.png'), style: {} },
+  checked: { source: require('./img/checked.png'), style: {} },
+  unChecked: { source: require('./img/unChecked.png'), style: {} },
 };
 
 export default Images;

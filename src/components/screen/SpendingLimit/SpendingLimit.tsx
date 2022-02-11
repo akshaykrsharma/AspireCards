@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import { DetailPropsType } from '../../../interfaces/interface';
 import Strings from '../../../res/Strings';
+import Colors from '../../../res/Colors';
 import Header from '../../common/Header';
  
 function SpendingLimit(props: DetailPropsType) {
@@ -17,6 +18,7 @@ function SpendingLimit(props: DetailPropsType) {
 const styles = StyleSheet.create({
   containerStyle: {
     width: '100%',
+    backgroundColor:Colors.background_blue
   },
   textStyle: {
     fontSize: 30,
