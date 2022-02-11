@@ -36,6 +36,14 @@ proguard/
 # Android Studio captures folder
 captures/
 
+keystores/*.jks
+keystores/*.keystore
+build/
+.idea
+.gradle
+local.properties
+*.iml
+
 # IntelliJ
 *.iml
 .idea/workspace.xml
@@ -59,20 +67,12 @@ captures/
 .externalNativeBuild
 .cxx/
 
-# Google Services (e.g. APIs or Firebase)
-# google-services.json
 
 # Freeline
 freeline.py
 freeline/
 freeline_project_description.json
 
-# fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
-fastlane/readme.md
 
 # Version control
 vcs.xml
@@ -83,3 +83,23 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+Pods
+.vscode
+.DS_Store
+*.zip
+*.ipa
+*.xcworkspacedata
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+
+
