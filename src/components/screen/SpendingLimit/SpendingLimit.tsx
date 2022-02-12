@@ -44,7 +44,7 @@ function SpendingLimit(props: DetailPropsType) {
           style={{flexDirection: 'row', marginTop: 20, paddingHorizontal: 0}}>
           <AmountGreen />
           <TextInput onChangeText={(text) => {
-            updateAmount(text);
+            updateAmount(text.replace(" ","").replace(",", ""));
           }} defaultValue={`${getIndianAmountFormat(""+value)}`} keyboardType={'decimal-pad'} style={styles.textInput} testID="input"></TextInput>
         </View>
         <View style={styles.sep}></View>

@@ -3,21 +3,21 @@ import {View, Text, Image} from 'react-native';
 import Strings from './../res/Strings';
 import Images from './../res/Images';
 import Colors from './../res/Colors';
-import { Home, DebitCard,Payments,Credit,Profile } from '../components/screen';
+import { Home, DebitCard, Payments,Credit,Profile } from '../components/screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SpendingLimit from '../components/screen/SpendingLimit/SpendingLimit';
 
-function tabElement(title, image) {
+function tabElement(title:string, image: object) {
   return {
-    tabBarLabel: ({focused}) => (
+    tabBarLabel: ({focused}:any) => (
       <Text
         style={focused ? {color: Colors.app_theme} : {color: Colors.silver}}>
         {title}
       </Text>
     ),
-    tabBarIcon: ({focused}) => (
+    tabBarIcon: ({focused}:any) => (
       <Image
         source={image.source}
         style={[
