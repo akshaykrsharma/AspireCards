@@ -19,7 +19,7 @@ const Strings = {
   spendingLimitText: 'Set a weekly debit card spending limit',
   spendingLimitDescription:'Here weekly means the last 7 days - not the calendar week',
   spendingLimitDescriptionOff: 'You haven’t set any spending limit on card',
-  submit:'SUBMIT',
+  submit:'Save',
   HomeListItems: {
     topUp: 'Top-up account',
     topUpDescription: 'Deposit money to your account to use with card',

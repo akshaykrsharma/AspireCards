@@ -13,7 +13,7 @@ import CardCell from './CardCell';
 import CardView from '../../common/CardView';
 import AmountGreen from '../../common/AmountGreen';
 import {connect} from 'react-redux';
-import {getUser,updateUserData} from '../../../redux/actions/userAction';
+import {getUser, updateUserData} from '../../../redux/actions/userAction';
 import LoadingView from '../../common/LoadingView';
 
 const {height} = Dimensions.get('screen');
@@ -57,7 +57,7 @@ function renderListItem(props: DebitProps) {
       navigation={props.navigation}
       amount={item.amount}
       disableService={(title: string) => {
-        props.updateUserData({"weekly_max":0});
+        props.updateUserData({weekly_max: 0});
       }}
     />
   ));

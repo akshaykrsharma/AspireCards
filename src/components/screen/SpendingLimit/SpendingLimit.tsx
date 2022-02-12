@@ -9,15 +9,15 @@ import Images from '../../../res/Images';
 import {regularFont} from '../../../res/Fonts';
 import AmountGreen from '../../common/AmountGreen';
 import Button from '../../common/Button';
-import { getIndianAmountFormat, removeIndianAmountFormat } from '../../../utils/Utils';
+import { getIndianAmountFormat } from '../../../utils/Utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 import {getUser,updateUserData} from '../../../redux/actions/userAction';
 import LoadingView from '../../common/LoadingView';
 
 
-function submitUpdateAmount(props,amount) {
-  props.updateUserData({ "weekly_max": parseFloat(amount) })
+function submitUpdateAmount(props:DetailPropsType,amount:number) {
+  props.updateUserData({ "weekly_max": amount })
   if (props.isFetching == false) {
     props.navigation.goBack();
   }
@@ -55,7 +55,7 @@ function SpendingLimit(props: DetailPropsType) {
         <View style={styles.horizontalStyle}>
           <Button onPress={()=>updateAmount(5000)} title={Strings.amount1} textStyle={styles.amountTextStyle} style={styles.buttonSemiStyle}/ >
           <Button onPress={()=>updateAmount(10000)} title={Strings.amount2} textStyle={styles.amountTextStyle} style={styles.buttonSemiStyle}/ >
-          <Button onPress={()=>updateAmount(15000)} title={Strings.amount3} textStyle={styles.amountTextStyle} style={styles.buttonSemiStyle}/ >
+          <Button onPress={()=>updateAmount(20000)} title={Strings.amount3} textStyle={styles.amountTextStyle} style={styles.buttonSemiStyle}/ >
         </View>
         <View style={{ flex: 1 }}/>
         <SafeAreaView>

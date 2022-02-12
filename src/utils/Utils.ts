@@ -2,11 +2,8 @@ import React from 'react';
 import {Dimensions, Platform} from 'react-native';
 
 export function getIndianAmountFormat(number: string): string {
-    try {
-      return number.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-    } catch (exp) {
-    }
-    return number;
+  const nn = "" + number;
+  return nn.replace(/\B(?=(?:(\d\d)+(\d)(?!\d))+(?!\d))/g, ',');
 }
 
 export function removeIndianAmountFormat(number: string): string {

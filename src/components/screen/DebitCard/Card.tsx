@@ -6,13 +6,13 @@ import Colors from '../../../res/Colors';
 import {boldFont, regularFont} from '../../../res/Fonts';
 import {getCCFormatNumber} from '../../../utils/Utils';
 import Strings from '../../../res/Strings';
-import VerticalCard from './VerticalCard';
+import HorizontalCard from './HorizontalCard';
 import Check from '../../common/Check';
 
-function renderVerticalCard(weekly_max: string, weekly_spend: string) {
+function renderHorizontalCard(weekly_max: string, weekly_spend: string) {
   if (!!weekly_max && weekly_max!="0") {
     return (
-      <VerticalCard
+      <HorizontalCard
         weekly_max={parseFloat(weekly_max)}
         weekly_spend={parseFloat(weekly_spend)}/>
     );
@@ -55,7 +55,7 @@ export default function Card(props: CardPropsType) {
         }}
       ></Check>
       {renderCCView(props,showCard)}
-      {renderVerticalCard(props.weekly_max, props.weekly_spend)}
+      {renderHorizontalCard(props.weekly_max, props.weekly_spend)}
     </View>
   );
 }

@@ -4,8 +4,9 @@ import Colors from '../../../res/Colors';
 import Strings from '../../../res/Strings';
 import {boldFont, regularFont} from '../../../res/Fonts';
 import { HorizontalCardProps } from '../../../interfaces/interface';
+import { getCCFormatNumber, getIndianAmountFormat } from '../../../utils/Utils';
 
-export default function VerticalCard({weekly_max ,weekly_spend} : HorizontalCardProps) {
+export default function HorizontalCard({weekly_max ,weekly_spend} : HorizontalCardProps) {
   const anim = new Animated.Value(0);
   const [progressStatus, setProgressStatus] = useState(0);
 
@@ -31,7 +32,7 @@ export default function VerticalCard({weekly_max ,weekly_spend} : HorizontalCard
         <Text style={styles.amountStyle}>
           S${weekly_spend}
           <Text style={styles.amountMaxStyle}>
-            {} | {weekly_max}
+            {} | {getIndianAmountFormat(""+weekly_max)}
           </Text>
         </Text>
       </View>
