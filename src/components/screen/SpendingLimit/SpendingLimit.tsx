@@ -15,7 +15,7 @@ function SpendingLimit(props: DetailPropsType) {
       <Header
         onLeftPress={() => props.navigation.goBack()}
         title={Strings.HeadingTitle.spendingLimit}></Header>
-      <CardView style={styles.cardStyle}>
+      <CardView style={styles.cardStyle} topStyle={{paddingTop:0}}>
         <View style={styles.topHeading}>
           <Image
             style={styles.imgMeterStyle}

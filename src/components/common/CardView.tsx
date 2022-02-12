@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import Colors from '../../res/Colors';
 export default function CardView(props: any) {
   return (
-    <View style={styles.whiteSpace}>
+    <View style={[styles.whiteSpace,props.topStyle]}>
       <View style={[styles.cardStyle, props.style]}>{props.children}</View>
     </View>
   );
