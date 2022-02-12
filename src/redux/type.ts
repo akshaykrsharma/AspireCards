@@ -1,4 +1,4 @@
-export = {
+export default {
   FETCHING_USER_DATA: 'fetching_user_data',
   USER_DATA_SUCCESS: 'user_data_success',
   USER_DATA_ERROR: 'user_data_error',

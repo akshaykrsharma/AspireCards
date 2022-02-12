@@ -15,7 +15,7 @@ const {
 } = TYPES;
 
 
-export default (state, action: object) => {
+ const user_reducer=(state=INITIAL_STATE, action: object) => {
   console.log('AuthReducer Action=', action.type);
 
   switch (action.type) {
@@ -43,4 +43,8 @@ export default (state, action: object) => {
     default:
       return state ? {} : INITIAL_STATE;
   }
-};
+ };
+
+module.exports = {
+   user_reducer
+ }

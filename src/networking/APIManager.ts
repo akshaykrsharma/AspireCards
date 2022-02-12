@@ -25,7 +25,7 @@ export default class APIManager {
       promise = API.post(endPoint, params);
     } else if (methodType == 'PUT') {
       promise = API.put(endPoint, params);
-    } else if (methodType == 'DELETE') {
+    } else {
       promise = API.delete(endPoint, params);
     }
 

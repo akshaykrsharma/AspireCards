@@ -14,6 +14,8 @@ import APIManager from '../../../networking/APIManager';
 import USER_DATA_URL  from '../../../networking/EndPoints';
 import CardView from '../../common/CardView';
 import AmountGreen from '../../common/AmountGreen';
+import { connect } from 'react-redux';
+import { getUser, getUserData } from '../../../redux/actions/userAction';
 
 
 const {height} = Dimensions.get('screen');
@@ -60,12 +62,8 @@ function renderCardInfo(props:DebitProps) {
 function DebitCard(props: DebitProps) {
  
   useEffect(() => {
-    APIManager.getResponse(USER_DATA_URL, "GET", {}, (status: boolean, response: {data:object}) => {
-      if (status) {
-        console.log(response.data);
-      }
-    });
-  })
+    props.userDataCall();
+  },[])
 
   return (
     <View style={styles.containerStyle}>
@@ -119,4 +117,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DebitCard;
+const mapStateToProps=(state:any)=>{
+  return {
+    userdata:state.user_reducer
+  }
+}
+
+const mapDispatchToProps=(dispatch:any)=>{
+  return {
+    userDataCall:(params:any)=>{dispatch(getUser(params))}
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(DebitCard);
