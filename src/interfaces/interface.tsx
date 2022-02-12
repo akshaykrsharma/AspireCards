@@ -5,6 +5,10 @@ export interface HeaderProps {
   title?: string; //?: it means it is optional property
   onLeftPress?: ((event: GestureResponderEvent) => void) | undefined;
 }
+export interface ButtonProps {
+  title?: string;
+  onPress?: ((event: GestureResponderEvent) => void) | undefined;
+}
 
 export interface HomeProps {
   navigation: {
@@ -16,6 +20,7 @@ export interface DebitProps {
     navigate:Function
   },
   userDataCall: Function,
+  updateUserData:Function,
   isFetching: boolean,
   userData: {
       name: string,
@@ -30,6 +35,18 @@ export interface DebitProps {
 }
 
 export interface DetailPropsType {
+  getUser: Function,
+  updateUserData: Function,
+  isFetching: boolean,
+  userData: {
+      name: string,
+      card_number: string,
+      valid_through: string,
+      cvv: string,
+      weekly_spend: string,
+      weekly_max: string,
+      balance: string,
+  },
   navigation: {
     goBack: Function,
   };

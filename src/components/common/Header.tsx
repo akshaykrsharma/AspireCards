@@ -46,12 +46,9 @@ const styles = StyleSheet.create({
   },
   containerStyle: {
     paddingHorizontal: 24,
-    paddingVertical: 8,
+    paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  textStyle: {
-    fontSize: 30,
   },
   logo: {
     tintColor: Colors.app_theme,

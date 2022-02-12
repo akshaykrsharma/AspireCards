@@ -13,7 +13,7 @@ export default function VerticalCard({weekly_max ,weekly_spend} : HorizontalCard
     !!weekly_max && weekly_max != 0 && onAnimate(); 
   }, [weekly_max,weekly_spend]);
   const onAnimate = () => {
-    let perProgressStatus = (weekly_spend / weekly_max) * 100;
+    let perProgressStatus =weekly_max>=weekly_spend? ((weekly_spend / weekly_max) * 100):100;
     anim.addListener(({value}:any) => {
       setProgressStatus(parseInt(value, 10));
     });

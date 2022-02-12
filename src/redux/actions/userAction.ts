@@ -1,5 +1,5 @@
 import TYPES from '../type';
-const { IS_FETCHING_DATA,FETCHING_USER_DATA, USER_DATA_SUCCESS, USER_DATA_ERROR, UPDATE_BALANCE_SUCCESS, UPDATE_BALANCE_ERROR } = TYPES;
+const { FETCHING_USER_DATA, USER_DATA_SUCCESS, USER_DATA_ERROR, UPDATING_USER_DATA, USER_UPDATE_SUCCESS, USER_UPDATE_ERROR } = TYPES;
 
 export function getUser(payload:Object) {
   return {
@@ -22,16 +22,23 @@ export function getUserFailure(error:Object) {
   };
 }
 
-export function getBalanceData(payload:Object) {
+export function updateUserData(payload:Object) {
   return {
-    type: UPDATE_BALANCE_SUCCESS,
+    type: UPDATING_USER_DATA,
     payload: payload,
   };
 }
 
-export function getBalanceFailure(error:Object) {
+export const getUpdatedUserData=(payload:Object)=> {
   return {
-    type: UPDATE_BALANCE_ERROR,
+    type: USER_UPDATE_SUCCESS,
+    payload: payload,
+  };
+}
+
+export function updateUserDataFailure(error:Object) {
+  return {
+    type: USER_UPDATE_ERROR,
     payload: error,
   };
 }

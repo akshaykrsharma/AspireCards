@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
-import Strings from '../res/Strings';
+import EndPoints from './EndPoints';
 
 export default class APIManager {
   /**
@@ -16,13 +16,15 @@ export default class APIManager {
   ): Promise<AxiosResponse<Function, Function>> {
     let promise = null;
     const API = axios.create({
-      baseURL: Strings.BASE_URL,
+      baseURL: EndPoints.BASE_URL,
       timeout: 3 * 60 * 1000,
     });
     if (methodType == 'GET') {
       promise = API.get(endPoint, {params});
     } else if (methodType == 'POST') {
       promise = API.post(endPoint, params);
+    } else if (methodType == 'PATCH') {
+      promise = API.patch(endPoint, params);
     } else if (methodType == 'PUT') {
       promise = API.put(endPoint, params);
     } else {
@@ -53,7 +55,6 @@ export default class APIManager {
         callBackFx(true, response.data);
       })
       .catch(error => {
-        console.log(JSON.stringify(error, null, 2));
         //cb = (isSuccessful, error);
         callBackFx(false, error.response);
       });

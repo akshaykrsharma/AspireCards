@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 import {View, StyleSheet, TextInput, Text, Image} from 'react-native';
 import {DetailPropsType} from '../../../interfaces/interface';
 import Strings from '../../../res/Strings';
@@ -8,8 +8,24 @@ import CardView from '../../common/CardView';
 import Images from '../../../res/Images';
 import {regularFont} from '../../../res/Fonts';
 import AmountGreen from '../../common/AmountGreen';
+import Button from '../../common/Button';
+import { getIndianAmountFormat, removeIndianAmountFormat } from '../../../utils/Utils';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { connect } from 'react-redux';
+import {getUser,updateUserData} from '../../../redux/actions/userAction';
+import LoadingView from '../../common/LoadingView';
+
+
+function submitUpdateAmount(props,amount) {
+  props.updateUserData({ "weekly_max": parseFloat(amount) })
+  if (props.isFetching == false) {
+    props.navigation.goBack();
+  }
+}
 
 function SpendingLimit(props: DetailPropsType) {
+  const weekly_max = props?.userData?.weekly_max;
+  const [value, updateAmount] = useState(!!weekly_max ? weekly_max : 0);
   return (
     <View style={styles.containerStyle}>
       <Header
@@ -27,13 +43,26 @@ function SpendingLimit(props: DetailPropsType) {
         <View
           style={{flexDirection: 'row', marginTop: 20, paddingHorizontal: 0}}>
           <AmountGreen />
-          <TextInput style={styles.textInput} testID="input"></TextInput>
+          <TextInput onChangeText={(text) => {
+            updateAmount(text);
+          }} defaultValue={`${getIndianAmountFormat(""+value)}`} keyboardType={'decimal-pad'} style={styles.textInput} testID="input"></TextInput>
         </View>
         <View style={styles.sep}></View>
         <Text style={styles.spendingLimitDescriptionStyle}>
           {Strings.spendingLimitDescription}
         </Text>
+
+        <View style={styles.horizontalStyle}>
+          <Button onPress={()=>updateAmount(5000)} title={Strings.amount1} textStyle={styles.amountTextStyle} style={styles.buttonSemiStyle}/ >
+          <Button onPress={()=>updateAmount(10000)} title={Strings.amount2} textStyle={styles.amountTextStyle} style={styles.buttonSemiStyle}/ >
+          <Button onPress={()=>updateAmount(15000)} title={Strings.amount3} textStyle={styles.amountTextStyle} style={styles.buttonSemiStyle}/ >
+        </View>
+        <View style={{ flex: 1 }}/>
+        <SafeAreaView>
+          <Button onPress={()=>{submitUpdateAmount(props,value)}} style={styles.buttonStyle} title={Strings.submit}></Button>
+        </SafeAreaView>
       </CardView>
+      <LoadingView isLoading={props.isFetching}></LoadingView>
     </View>
   );
 }
@@ -48,7 +77,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   cardStyle: {
-    height: '100%',
+    height: '88%',
     marginTop: 30,
     paddingHorizontal: 30,
     paddingVertical: 20,
@@ -80,6 +109,42 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 1,
   },
+  buttonStyle: {
+    width: '70%',
+    alignSelf: 'center',
+    marginBottom:80,
+  },
+  buttonSemiStyle: {
+    alignSelf:'center',
+    marginTop: 50,
+    backgroundColor: Colors.background_amount_button,
+    borderRadius: 4,
+    marginHorizontal:10,
+    minHeight: 40,
+    padding: 8,
+    flex:1,
+    paddingHorizontal:10,
+  },
+  amountTextStyle: {
+    color: Colors.app_theme,
+    ...regularFont(12),
+  },
+  horizontalStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    
+  }
 });
 
-export default SpendingLimit;
+const mapStateToProps = (state: any) => {
+  return {
+    userData: state.payload?.data,
+    isFetching: state.isFetching,
+    updateSuccess: state.updateSuccess,
+  };
+};
+
+export default connect(mapStateToProps, {
+  getUser,
+  updateUserData
+})(SpendingLimit);

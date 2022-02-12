@@ -10,8 +10,9 @@ const {
   FETCHING_USER_DATA,
   USER_DATA_SUCCESS,
   USER_DATA_ERROR,
-  UPDATE_BALANCE_SUCCESS,
-  UPDATE_BALANCE_ERROR,
+  UPDATING_USER_DATA,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_ERROR,
 } = TYPES;
 
  interface reduxPropType {
@@ -21,8 +22,6 @@ const {
 }
 
  const userReducer=(state=INITIAL_STATE, action: reduxPropType) => {
-  console.log('AuthReducer Action=', action.type);
-
   switch (action.type) {
     case FETCHING_USER_DATA:
       return {
@@ -31,7 +30,6 @@ const {
         payload: null,
       };
     case USER_DATA_SUCCESS:
-      console.log('AuthReducer Action=', action.payload);
       return {
         ...state,
         payload: action.payload,
@@ -39,6 +37,27 @@ const {
         error: null,
       };
     case USER_DATA_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
+      };
+    
+     case UPDATING_USER_DATA:
+      return {
+        ...state,
+        isFetching: true,
+        payload: null,
+      };
+    
+    case USER_UPDATE_SUCCESS:
+      return {
+        ...state,
+        payload: action.payload,
+        isFetching: false,
+        error: null,
+      };
+    case USER_UPDATE_ERROR:
       return {
         ...state,
         isFetching: false,

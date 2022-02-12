@@ -7,7 +7,15 @@ import {getIndianAmountFormat} from '../../../utils/Utils';
 import Images from '../../../res/Images';
 
 function CardCell(props: CardCellPropsType) {
-  const {title, image, description, showSwitch, amount, navigate, disableService} = props;
+  const {
+    title,
+    image,
+    description,
+    showSwitch,
+    amount,
+    navigate,
+    disableService,
+  } = props;
   return (
     <TouchableOpacity
       style={styles.containerStyle}
@@ -20,11 +28,11 @@ function CardCell(props: CardCellPropsType) {
           }
         }
       }}>
-      <Image source={image}/>
+      <Image source={image} />
       <View style={styles.midContainer}>
         <Text style={styles.textStyle}>{title}</Text>
         <Text style={styles.descriptionStyle}>{`${description} ${
-          !!amount ? getIndianAmountFormat(amount) : ''
+          !!amount && amount != '0' ? getIndianAmountFormat(amount) : ''
         }`}</Text>
       </View>
       {showSwitch != undefined && (

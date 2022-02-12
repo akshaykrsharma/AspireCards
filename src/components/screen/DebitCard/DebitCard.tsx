@@ -13,7 +13,7 @@ import CardCell from './CardCell';
 import CardView from '../../common/CardView';
 import AmountGreen from '../../common/AmountGreen';
 import {connect} from 'react-redux';
-import {getUser} from '../../../redux/actions/userAction';
+import {getUser,updateUserData} from '../../../redux/actions/userAction';
 import LoadingView from '../../common/LoadingView';
 
 const {height} = Dimensions.get('screen');
@@ -49,8 +49,6 @@ function renderListItem(props: DebitProps) {
     return item;
   });
 
-  console.log(JSON.stringify(data, null, 2));
-
   return data.map((item, index) => (
     <CardCell
       key={index}
@@ -59,7 +57,7 @@ function renderListItem(props: DebitProps) {
       navigation={props.navigation}
       amount={item.amount}
       disableService={(title: string) => {
-        console.log('Setting max amount = 0 for ' + title);
+        props.updateUserData({"weekly_max":0});
       }}
     />
   ));
@@ -109,10 +107,8 @@ function renderCardInfo(props: DebitProps) {
 }
 function DebitCard(props: DebitProps) {
   useEffect(() => {
-    props.userDataCall();
+    props.getUser();
   }, []);
-
-  console.log('data==>' + props.isFetching);
 
   return (
     <View style={styles.containerStyle}>
@@ -171,12 +167,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    userDataCall: (params: any) => {
-      dispatch(getUser(params));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DebitCard);
+export default connect(mapStateToProps, {
+  getUser,
+  updateUserData,
+})(DebitCard);

@@ -6,7 +6,8 @@ const Colors = {
 	silver:'#DDDDDD',
 	primary_text: '#25345F',
 	secondary_text:'#22222266',
-	black:'#222222'
+	black: '#222222',
+	background_amount_button:'#01D16712',
 };
 
 export default Colors;

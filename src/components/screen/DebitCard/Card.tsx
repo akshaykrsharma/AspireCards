@@ -10,11 +10,11 @@ import VerticalCard from './VerticalCard';
 import Check from '../../common/Check';
 
 function renderVerticalCard(weekly_max: string, weekly_spend: string) {
-  if (!!weekly_max) {
+  if (!!weekly_max && weekly_max!="0") {
     return (
       <VerticalCard
         weekly_max={parseFloat(weekly_max)}
-        weekly_spend={parseFloat(weekly_spend)}></VerticalCard>
+        weekly_spend={parseFloat(weekly_spend)}/>
     );
   }
 }
