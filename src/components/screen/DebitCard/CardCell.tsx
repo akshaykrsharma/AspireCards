@@ -1,30 +1,39 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
 import {CardCellPropsType} from '../../../interfaces/interface';
 import {boldFont, regularFont} from '../../../res/Fonts';
 import Colors from '../../../res/Colors';
-import { getIndianAmountFormat } from '../../../utils/Utils';
-import Check from '../../common/Check';
-import Strings from '../../../res/Strings';
+import {getIndianAmountFormat} from '../../../utils/Utils';
+import Images from '../../../res/Images';
 
 function CardCell(props: CardCellPropsType) {
-  const {title, image, description, showSwitch, amount} = props;
+  const {title, image, description, showSwitch, amount, navigate, disableService} = props;
   return (
-    <View style={styles.containerStyle}>
-      <Image source={image}></Image>
+    <TouchableOpacity
+      style={styles.containerStyle}
+      onPress={() => {
+        if (!!showSwitch) {
+          disableService(title);
+        } else {
+          if (navigate) {
+            props.navigation.navigate(navigate);
+          }
+        }
+      }}>
+      <Image source={image}/>
       <View style={styles.midContainer}>
         <Text style={styles.textStyle}>{title}</Text>
-        <Text style={styles.descriptionStyle}>{`${description} ${!!amount?getIndianAmountFormat(amount):""}`}</Text>
+        <Text style={styles.descriptionStyle}>{`${description} ${
+          !!amount ? getIndianAmountFormat(amount) : ''
+        }`}</Text>
       </View>
-      {showSwitch!=undefined && <Check isChecked={showSwitch} selectedValue={(isSelected:boolean) => {
-        if (isSelected) {
-          if (title == Strings.HomeListItems.limit) {
-            props.navigation.navigate('SpendingLimit');
-          }
-          
-        }
-      }} />}
-    </View>
+      {showSwitch != undefined && (
+        <Image
+          style={Images.checked.style}
+          source={showSwitch ? Images.checked.source : Images.unChecked.source}
+        />
+      )}
+    </TouchableOpacity>
   );
 }
 

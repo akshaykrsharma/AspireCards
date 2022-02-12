@@ -12,7 +12,8 @@ export default function HomeListItem() {
       title: Strings.HomeListItems.limit,
       description: Strings.HomeListItems.limitDescription,
       image: Images.limit.source,
-      showSwitch: true,
+      navigate: 'SpendingLimit',
+      amount:"0",
     },
     {
       title: Strings.HomeListItems.freeze,

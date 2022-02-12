@@ -35,7 +35,7 @@ const Strings = {
   },
   CardMasking: {
     name: 'XXXX XXXX',
-    card_number: 'XXXX  XXXX  XXXX  XXXX',
+    card_number: '••••   ••••   ••••   ••••',
     cvv: 'XXX',
     valid_through:'XX/XX'
   }

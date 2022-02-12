@@ -32,35 +32,37 @@ function renderBalanceContainer(props: DebitProps) {
 }
 
 function renderListItem(props: DebitProps) {
-  let data = HomeListItem();
-  return data.map((item, index) => {
+  const weekly_max = props?.userData?.weekly_max;
+  let data = HomeListItem().map(item => {
     if (item.title == Strings.HomeListItems.limit) {
-      const weekly_max = props?.userData?.weekly_max;
-      if (!!weekly_max && weekly_max != '0') {
-        return (
-          <CardCell
-            key={index}
-            {...item}
-            showSwitch={true}
-            navigation={props.navigation}
-            amount={weekly_max}
-          />
-        );
-      } else {
-        return (
-          <CardCell
-            key={index}
-            {...item}
-            showSwitch={false}
-            description={Strings.spendingLimitDescriptionOff}
-            navigation={props.navigation}
-          />
-        );
+      const isChecked = !!weekly_max && weekly_max != '0';
+      item.description = isChecked
+        ? Strings.spendingLimitDescription
+        : Strings.spendingLimitDescriptionOff;
+      item.showSwitch = isChecked;
+      if (isChecked) {
+        item.amount = weekly_max;
+        item.navigate = 'SpendingLimit';
       }
+      return item;
     }
-
-    return <CardCell key={index} {...item} navigation={props.navigation} />;
+    return item;
   });
+
+  console.log(JSON.stringify(data, null, 2));
+
+  return data.map((item, index) => (
+    <CardCell
+      key={index}
+      {...item}
+      showSwitch={item.showSwitch}
+      navigation={props.navigation}
+      amount={item.amount}
+      disableService={(title: string) => {
+        console.log('Setting max amount = 0 for ' + title);
+      }}
+    />
+  ));
 }
 
 function renderCard(props: DebitProps) {

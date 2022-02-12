@@ -40,6 +40,8 @@ export interface CardCellPropsType {
   description: string,
   showSwitch?: boolean,
   amount?: string,
+  navigate?: string,
+  disableService: Function,
   navigation: {
     navigate: Function
   }
@@ -61,7 +63,7 @@ export interface CardPropsType {
   weekly_spend: string,
   weekly_max: string,
   image: ImageSourcePropType,
-  style: object
+  style: object,
   // navigation: {
   //   goBack: Function,
   // };

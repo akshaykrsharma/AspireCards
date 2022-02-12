@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image, Text} from 'react-native';
 import {CardPropsType} from '../../../interfaces/interface';
 import Images from '../../../res/Images';
@@ -19,20 +19,20 @@ function renderVerticalCard(weekly_max: string, weekly_spend: string) {
   }
 }
 
-function renderCCView(props: CardPropsType) {
+function renderCCView(props: CardPropsType, showCard:boolean) {
   return (
     <View style={styles.cardStyle}>
       <Image source={Images.logo.source} style={styles.logo}></Image>
       <Text style={styles.nameStyle}>{props.name}</Text>
-      <Text style={styles.creditCardNumber}>
-        {getCCFormatNumber(props.card_number)}
+      <Text style={showCard?styles.creditCardNumber:styles.creditHideCardNumber}>
+        {showCard ? getCCFormatNumber(props.card_number) : Strings.CardMasking.card_number}
       </Text>
       <View style={styles.cvvContainer}>
         <Text
           style={
             styles.validThruStyle
           }>{`${Strings.validthru} ${props.valid_through}`}</Text>
-        <Text style={styles.cvvStyle}>{`${Strings.cvv} ${props.cvv}`}</Text>
+        <Text style={styles.cvvStyle}>{`${Strings.cvv} ${showCard?props.cvv:Strings.CardMasking.cvv}`}</Text>
       </View>
       <Image source={props.image} style={styles.logo}></Image>
     </View>
@@ -40,16 +40,21 @@ function renderCCView(props: CardPropsType) {
 }
 
 export default function Card(props: CardPropsType) {
+  const [showCard,setCardVisibility] = useState(false);
   return (
     <View style={[styles.containerStyle, props.style]}>
       <Check
         style={styles.topContainer}
-        isChecked={false}
+        isChecked={showCard}
         imageChecked={Images.eye_on.source}
         imageUnChecked={Images.eye_off.source}
-        labelChecked={Strings.hideCardNumber}
-        labelUnChecked={Strings.showCardNumber}></Check>
-      {renderCCView(props)}
+        labelChecked={Strings.showCardNumber}
+        labelUnChecked={Strings.hideCardNumber}
+        selectedValue={(isChecked:boolean) => {
+          setCardVisibility(isChecked);
+        }}
+      ></Check>
+      {renderCCView(props,showCard)}
       {renderVerticalCard(props.weekly_max, props.weekly_spend)}
     </View>
   );
@@ -80,6 +85,11 @@ const styles = StyleSheet.create({
   },
   creditCardNumber: {
     ...regularFont(14),
+    color: Colors.white,
+    marginBottom: 20,
+  },
+  creditHideCardNumber: {
+    ...boldFont(14),
     color: Colors.white,
     marginBottom: 20,
   },
