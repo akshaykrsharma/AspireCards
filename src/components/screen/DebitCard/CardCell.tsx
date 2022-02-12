@@ -8,16 +8,15 @@ import Check from '../../common/Check';
 import Strings from '../../../res/Strings';
 
 function CardCell(props: CardCellPropsType) {
-  const {title, image, description, showSwitch,amount} = props;
+  const {title, image, description, showSwitch, amount} = props;
   return (
     <View style={styles.containerStyle}>
       <Image source={image}></Image>
       <View style={styles.midContainer}>
         <Text style={styles.textStyle}>{title}</Text>
-        <Text style={styles.descriptionStyle}>{`${description} ${getIndianAmountFormat(amount)}`}</Text>
+        <Text style={styles.descriptionStyle}>{`${description} ${!!amount?getIndianAmountFormat(amount):""}`}</Text>
       </View>
       {showSwitch!=undefined && <Check isChecked={showSwitch} selectedValue={(isSelected:boolean) => {
-        console.log('selectedValue==' + isSelected);
         if (isSelected) {
           if (title == Strings.HomeListItems.limit) {
             props.navigation.navigate('SpendingLimit');

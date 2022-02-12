@@ -16,7 +16,17 @@ export interface DebitProps {
     navigate:Function
   },
   userDataCall: Function,
-  isFetching: boolean
+  isFetching: boolean,
+  userData: {
+      name: string,
+      card_number: string,
+      valid_through: string,
+      cvv: string,
+      weekly_spend: string,
+      weekly_max: string,
+      balance: string,
+  },
+  
 }
 
 export interface DetailPropsType {
@@ -29,7 +39,7 @@ export interface CardCellPropsType {
   image?: ImageSourcePropType,
   description: string,
   showSwitch?: boolean,
-  amount: string,
+  amount?: string,
   navigation: {
     navigate: Function
   }
@@ -37,14 +47,19 @@ export interface CardCellPropsType {
 export interface CheckedPropType {
   selectedValue?: Function,
   isChecked: boolean,
-  label?: string,
-  image?: ImageSourcePropType,
+  labelChecked?: string,
+  labelUnChecked?: string,
+  imageChecked?: ImageSourcePropType,
+  imageUnChecked?: ImageSourcePropType,
+  style?:object
 }
 export interface CardPropsType {
   name: string,
   card_number: string,
   valid_through: string,
   cvv: string,
+  weekly_spend: string,
+  weekly_max: string,
   image: ImageSourcePropType,
   style: object
   // navigation: {

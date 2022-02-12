@@ -4,15 +4,15 @@ import Colors from '../../../res/Colors';
 import Strings from '../../../res/Strings';
 import {boldFont, regularFont} from '../../../res/Fonts';
 
-export default function VerticalCard() {
+export default function VerticalCard({weekly_max ,weekly_spend}) {
   const anim = new Animated.Value(0);
-
+  console.log('value==', weekly_max + "-->" + weekly_spend+ (typeof weekly_max));
   const [progressStatus, setProgressStatus] = useState(0);
-  const [totalAmount] = useState(5000);
-  const [currentAmount] = useState(2500);
+  const [totalAmount] = useState(weekly_max);
+  const [currentAmount] = useState(weekly_spend);
   useEffect(() => {
     onAnimate();
-  }, []);
+  }, [weekly_max!=0]);
   const onAnimate = () => {
     let perProgressStatus = (currentAmount / totalAmount) * 100;
     anim.addListener(({value}:any) => {

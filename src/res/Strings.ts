@@ -19,6 +19,7 @@ const Strings = {
   showCardNumber: 'Show card number',
   spendingLimitText: 'Set a weekly debit card spending limit',
   spendingLimitDescription:'Here weekly means the last 7 days - not the calendar week',
+  spendingLimitDescriptionOff:'You haven’t set any spending limit on card',
   HomeListItems: {
     topUp: 'Top-up account',
     topUpDescription: 'Deposit money to your account to use with card',
@@ -31,6 +32,12 @@ const Strings = {
     deactivated: 'Deactivated card',
     deactivatedDescription: 'Your previously deactivated cards',
     
+  },
+  CardMasking: {
+    name: 'XXXX XXXX',
+    card_number: 'XXXX  XXXX  XXXX  XXXX',
+    cvv: 'XXX',
+    valid_through:'XX/XX'
   }
 };
 
