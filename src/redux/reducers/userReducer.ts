@@ -14,8 +14,13 @@ const {
   UPDATE_BALANCE_ERROR,
 } = TYPES;
 
+ interface reduxPropType {
+   action: {
+     type:string
+   },
+}
 
- const user_reducer=(state=INITIAL_STATE, action: object) => {
+ const userReducer=(state=INITIAL_STATE, action: reduxPropType) => {
   console.log('AuthReducer Action=', action.type);
 
   switch (action.type) {
@@ -46,5 +51,5 @@ const {
  };
 
 module.exports = {
-   user_reducer
+   userReducer
  }

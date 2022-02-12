@@ -14,7 +14,9 @@ export interface HomeProps {
 export interface DebitProps {
   navigation: {
     navigate:Function
-  }
+  },
+  userDataCall: Function,
+  isFetching: boolean
 }
 
 export interface DetailPropsType {

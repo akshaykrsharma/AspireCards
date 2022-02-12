@@ -1,8 +1,8 @@
-// import UserReducer from './UserReducer';
+import {userReducer} from './userReducer';
 
-// export default (state:any, action:any) => {
-// 	return {
-// 		...state,
-// 		...UserReducer(state, action)
-// 	};
-// };
+export default (state:any, action:any) => {
+	return {
+		...state,
+		...userReducer(state, action)
+	};
+};

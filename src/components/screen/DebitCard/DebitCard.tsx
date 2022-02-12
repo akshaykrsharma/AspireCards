@@ -10,12 +10,10 @@ import Card from './Card';
 import Images from '../../../res/Images';
 import HomeListItem from '../DebitCard/HomeListItem';
 import CardCell from './CardCell';
-import APIManager from '../../../networking/APIManager';
-import USER_DATA_URL  from '../../../networking/EndPoints';
 import CardView from '../../common/CardView';
 import AmountGreen from '../../common/AmountGreen';
 import { connect } from 'react-redux';
-import { getUser, getUserData } from '../../../redux/actions/userAction';
+import { getUser } from '../../../redux/actions/userAction';
 
 
 const {height} = Dimensions.get('screen');
@@ -63,7 +61,9 @@ function DebitCard(props: DebitProps) {
  
   useEffect(() => {
     props.userDataCall();
-  },[])
+  }, [])
+  
+  console.log("data==>" + props.isFetching);
 
   return (
     <View style={styles.containerStyle}>
@@ -119,7 +119,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps=(state:any)=>{
   return {
-    userdata:state.user_reducer
+    userdata: state.payload,
+    isFetching: state.isFetching
   }
 }
 
