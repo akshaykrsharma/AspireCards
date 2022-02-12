@@ -70,3 +70,7 @@ export interface CardPropsType {
 export interface LoaderPropsType {
   isLoading: boolean,
 }
+export interface HorizontalCardProps {
+  weekly_max: number,
+  weekly_spend: number,
+}

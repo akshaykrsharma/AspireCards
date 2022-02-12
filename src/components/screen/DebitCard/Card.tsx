@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Image, Text} from 'react-native';
 import {CardPropsType} from '../../../interfaces/interface';
 import Images from '../../../res/Images';
 import Colors from '../../../res/Colors';
@@ -9,13 +9,37 @@ import Strings from '../../../res/Strings';
 import VerticalCard from './VerticalCard';
 import Check from '../../common/Check';
 
-function renderVerticalCard(weekly_max:string, weekly_spend:string) {
-  if (!!weekly_max && !!weekly_spend) {
-      return <VerticalCard weekly_max={parseFloat(weekly_max)} weekly_spend={parseFloat(weekly_spend)}></VerticalCard>
+function renderVerticalCard(weekly_max: string, weekly_spend: string) {
+  if (!!weekly_max) {
+    return (
+      <VerticalCard
+        weekly_max={parseFloat(weekly_max)}
+        weekly_spend={parseFloat(weekly_spend)}></VerticalCard>
+    );
   }
 }
 
-function Card(props: CardPropsType) {
+function renderCCView(props: CardPropsType) {
+  return (
+    <View style={styles.cardStyle}>
+      <Image source={Images.logo.source} style={styles.logo}></Image>
+      <Text style={styles.nameStyle}>{props.name}</Text>
+      <Text style={styles.creditCardNumber}>
+        {getCCFormatNumber(props.card_number)}
+      </Text>
+      <View style={styles.cvvContainer}>
+        <Text
+          style={
+            styles.validThruStyle
+          }>{`${Strings.validthru} ${props.valid_through}`}</Text>
+        <Text style={styles.cvvStyle}>{`${Strings.cvv} ${props.cvv}`}</Text>
+      </View>
+      <Image source={props.image} style={styles.logo}></Image>
+    </View>
+  );
+}
+
+export default function Card(props: CardPropsType) {
   return (
     <View style={[styles.containerStyle, props.style]}>
       <Check
@@ -25,22 +49,8 @@ function Card(props: CardPropsType) {
         imageUnChecked={Images.eye_off.source}
         labelChecked={Strings.hideCardNumber}
         labelUnChecked={Strings.showCardNumber}></Check>
-      <View style={styles.cardStyle}>
-        <Image source={Images.logo.source} style={styles.logo}></Image>
-        <Text style={styles.nameStyle}>{props.name}</Text>
-        <Text style={styles.creditCardNumber}>
-          {getCCFormatNumber(props.card_number)}
-        </Text>
-        <View style={styles.cvvContainer}>
-          <Text
-            style={
-              styles.validThruStyle
-            }>{`${Strings.validthru} ${props.valid_through}`}</Text>
-          <Text style={styles.cvvStyle}>{`${Strings.cvv} ${props.cvv}`}</Text>
-        </View>
-        <Image source={props.image} style={styles.logo}></Image>
-      </View>
-      {renderVerticalCard(props.weekly_max,props.weekly_spend)}
+      {renderCCView(props)}
+      {renderVerticalCard(props.weekly_max, props.weekly_spend)}
     </View>
   );
 }
@@ -107,5 +117,3 @@ const styles = StyleSheet.create({
     color: Colors.app_theme,
   },
 });
-
-export default Card;

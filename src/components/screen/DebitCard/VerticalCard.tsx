@@ -3,18 +3,17 @@ import {StyleSheet, Text, View, Animated} from 'react-native';
 import Colors from '../../../res/Colors';
 import Strings from '../../../res/Strings';
 import {boldFont, regularFont} from '../../../res/Fonts';
+import { HorizontalCardProps } from '../../../interfaces/interface';
 
-export default function VerticalCard({weekly_max ,weekly_spend}) {
+export default function VerticalCard({weekly_max ,weekly_spend} : HorizontalCardProps) {
   const anim = new Animated.Value(0);
-  console.log('value==', weekly_max + "-->" + weekly_spend+ (typeof weekly_max));
   const [progressStatus, setProgressStatus] = useState(0);
-  const [totalAmount] = useState(weekly_max);
-  const [currentAmount] = useState(weekly_spend);
+
   useEffect(() => {
-    onAnimate();
-  }, [weekly_max!=0]);
+    !!weekly_max && weekly_max != 0 && onAnimate(); 
+  }, [weekly_max,weekly_spend]);
   const onAnimate = () => {
-    let perProgressStatus = (currentAmount / totalAmount) * 100;
+    let perProgressStatus = (weekly_spend / weekly_max) * 100;
     anim.addListener(({value}:any) => {
       setProgressStatus(parseInt(value, 10));
     });
@@ -30,9 +29,9 @@ export default function VerticalCard({weekly_max ,weekly_spend}) {
       <View style={styles.amountContainer}>
         <Text style={styles.lableStyle}>{Strings.cardSpendingLimit}</Text>
         <Text style={styles.amountStyle}>
-          S${currentAmount}
+          S${weekly_spend}
           <Text style={styles.amountMaxStyle}>
-            {} | {totalAmount}
+            {} | {weekly_max}
           </Text>
         </Text>
       </View>
@@ -42,6 +41,7 @@ export default function VerticalCard({weekly_max ,weekly_spend}) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
