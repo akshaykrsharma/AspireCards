@@ -14,6 +14,7 @@ import CardView from '../../common/CardView';
 import AmountGreen from '../../common/AmountGreen';
 import { connect } from 'react-redux';
 import { getUser } from '../../../redux/actions/userAction';
+import LoadingView from '../../common/LoadingView';
 
 
 const {height} = Dimensions.get('screen');
@@ -70,6 +71,7 @@ function DebitCard(props: DebitProps) {
       <Header title={Strings.TabTitles.debitCard}></Header>
       {renderBalanceContainer()}
       {renderCardInfo(props)}
+      <LoadingView isLoading={props.isFetching}></LoadingView>
       {/* <Button
         title={'GOTO Spending'}
         onPress={() => props.navigation.navigate('SpendingLimit')}></Button> */}

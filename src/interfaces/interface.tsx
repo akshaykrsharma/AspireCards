@@ -51,3 +51,7 @@ export interface CardPropsType {
   //   goBack: Function,
   // };
 }
+
+export interface LoaderPropsType {
+  isLoading: boolean,
+}
