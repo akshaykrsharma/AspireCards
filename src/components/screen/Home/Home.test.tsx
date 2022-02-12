@@ -1,5 +1,9 @@
-const Home = require('./Home');
+import 'react-native';
+import React from 'react';
+import Home from './Home';
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(Home(1, 2)).toBe(3);
+import renderer from 'react-test-renderer';
+
+it('Home has been rendered successfully', () => {
+  renderer.create(<Home  />);
 });
