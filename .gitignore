@@ -102,4 +102,6 @@ buck-out/
 \.buckd/
 *.keystore
 
+coverage/
+
 

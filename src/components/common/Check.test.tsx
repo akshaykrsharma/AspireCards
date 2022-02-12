@@ -4,15 +4,25 @@ import renderer from 'react-test-renderer'
 
 import Check from './Check';
 
-it('Check has been rendered successfully', () => {
-  renderer.create(<Check isChecked />);
+//it is alias of test so we can use both
+
+describe("Checking Check Component...", () => {
+	it('Check has been rendered successfully', () => {
+		renderer.create(<Check isChecked />);
+	});
 });
 
 
 /// To creating snapshot
-test("Taking snapshot of code", () => {
-	const component = renderer.create(<Check isChecked />);
-	const contentOfCheck = component.toJSON();
-	expect(contentOfCheck).toMatchSnapshot();
+
+describe("Checking for snapshot...", () => {
+	test("Taking snapshot of code", () => {
+		const component = renderer.create(<Check isChecked />);
+		const contentOfCheck = component.toJSON();
+		expect(contentOfCheck).toMatchSnapshot();
+	});
 });
+
+
+
 
