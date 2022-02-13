@@ -21,4 +21,22 @@ AspireCards
 
 <img src="screenrecording/aspire_card_flow.gif" width="195" height="396"/>
 
+
+
+## API Introduction
+    - Set Weekly Spending Limit
+    - Disable Weekly Spending Limit
+    - Fetch User Info
+
+    **Overview**
+        - To set Weekly Spending Limit METHOD_TYPE = PATCH & weekly_max = YOUR_MAX_AMOUNT
+    To disable Weekly Spending Limit METHOD_TYPE = PATCH & weekly_max = 0 
+
+    **Authentication**
+        - As I've developed this for demo purpose only so there is no authentication required for now. 
+
+    **Rate limit**
+        - No there is no limit for it.  
+
+
 **[My LinkedIn Profile](https://www.linkedin.com/in/akshay8feb/)**
