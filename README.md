@@ -19,6 +19,6 @@ AspireCards
 | axios               | used to networking related stuff like fetching data from APIs   |
 
 
-<img src="screenrecording/aspire_card_flow.gif" width="325" height="660"/>
+<img src="screenrecording/aspire_card_flow.gif" width="195" height="396"/>
 
 **[My LinkedIn Profile](https://www.linkedin.com/in/akshay8feb/)**
