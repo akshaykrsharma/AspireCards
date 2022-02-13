@@ -23,7 +23,7 @@ AspireCards
 
 
 ### AdonisJS (A Node based Framework to develop API)
-<img src="screenrecording/adonisapi.png" width="195" height="396"/>
+<img src="screenrecording/adonisapi.png" />
 
 ## API Introduction
     - Set Weekly Spending Limit
