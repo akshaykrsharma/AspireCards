@@ -46,10 +46,10 @@ export default function Card(props: CardPropsType) {
       <Check
         style={styles.topContainer}
         isChecked={showCard}
-        imageChecked={Images.eye_on.source}
-        imageUnChecked={Images.eye_off.source}
-        labelChecked={Strings.showCardNumber}
-        labelUnChecked={Strings.hideCardNumber}
+        imageUnChecked={Images.eye_on.source}
+        imageChecked={Images.eye_off.source}
+        labelUnChecked={Strings.showCardNumber}
+        labelChecked={Strings.hideCardNumber}
         selectedValue={(isChecked:boolean) => {
           setCardVisibility(isChecked);
         }}
