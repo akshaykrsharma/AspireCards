@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, Text, ScrollView, Dimensions} from 'react-native';
+import {View, RefreshControl, Text, ScrollView, Dimensions, StyleSheet} from 'react-native';
 import {DebitProps} from '../../../interfaces/interface';
 import {boldFont, lightFont} from '../../../res/Fonts';
 import Strings from '../../../res/Strings';
@@ -25,7 +25,7 @@ function renderBalanceContainer(props: DebitProps) {
       <Text style={styles.availableBalance}>{Strings.availableBalance}</Text>
       <View style={styles.amountContainer}>
         <AmountGreen />
-        <Text style={styles.amountText}>{getIndianAmountFormat(amount)}</Text>
+        <Text style={styles.amountText}>{props.isFetching?Strings.CardMasking.amount:getIndianAmountFormat(amount)}</Text>
       </View>
     </>
   );
@@ -97,7 +97,13 @@ function renderCardInfo(props: DebitProps) {
   return (
     <ScrollView
       style={styles.containerScrollView}
-      contentContainerStyle={styles.contentContainerStyle}>
+      contentContainerStyle={styles.contentContainerStyle}
+      refreshControl={
+          <RefreshControl
+            refreshing={props.isFetching}
+            onRefresh={()=>props.getUser()}
+        />}
+    >
       <CardView style={styles.containerChildScrollView}>
         {renderCard(props)}
         {renderListItem(props)}

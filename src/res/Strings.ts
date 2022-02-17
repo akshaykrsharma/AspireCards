@@ -40,7 +40,8 @@ const Strings = {
     name: 'XXXX XXXX',
     card_number: '••••   ••••   ••••   ••••',
     cvv: 'XXX',
-    valid_through:'XX/XX'
+    valid_through: 'XX/XX',
+    amount: 'X,XXX'
   }
 };
 
