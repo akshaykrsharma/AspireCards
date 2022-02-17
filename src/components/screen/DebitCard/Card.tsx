@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
   logo: {
     alignSelf: 'flex-end',
     marginTop: 10,
+    tintColor:Colors.white
   },
   cardStyle: {
     backgroundColor: Colors.app_theme,

@@ -1,7 +1,9 @@
+import { Colors } from "react-native/Libraries/NewAppScreen";
+
 const mTabStyle = { width: 22, height: 22, padding: 2 };
 const Images = {
-  logo: { source: require('./img/logo.png'), style: { ...mTabStyle } },
-  tab1: { source: require('./img/tab1.png'), style: { ...mTabStyle } },
+  logo: { source: require('./img/logo_dummy.png'), style: { tintColor:Colors.white } },
+  tab1: { source: require('./img/dummy_logo_small.png'), style: { ...mTabStyle } },
   tab2: { source: require('./img/tab2.png'), style: { ...mTabStyle } },
   tab3: { source: require('./img/tab3.png'), style: { ...mTabStyle } },
   tab4: { source: require('./img/tab4.png'), style: { ...mTabStyle } },
